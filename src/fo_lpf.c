@@ -1,6 +1,6 @@
 #include "fo_lpf.h"
 
-static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2 = 0;
+static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2, m_offset = 0;
 static tp_coeffs m_coeffs = {0};
 
 tp_coeffs fo_lpf_calculate_coeffs(int fc, int fs)
@@ -21,5 +21,15 @@ F_SIZE fo_lpf_filter(F_SIZE sample)
 	F_SIZE yn = BIQUAD;
 	SAVE_FILTER_STATE;
 	
-	return(yn);
+	return(yn + m_offset);
+}
+
+void fo_lpf_set_offset(F_SIZE offset)
+{
+	m_offset = offset;
+}
+
+F_SIZE fo_lpf_get_offset(F_SIZE offset)
+{
+	return(m_offset);
 }

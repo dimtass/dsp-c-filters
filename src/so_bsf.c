@@ -1,6 +1,6 @@
 #include "so_bsf.h"
 
-static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2 = 0;
+static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2, m_offset = 0;
 static tp_coeffs m_coeffs = {0};
 
 tp_coeffs so_bsf_calculate_coeffs(float Q, int fc, int fs)
@@ -23,5 +23,15 @@ F_SIZE so_bsf_filter(F_SIZE sample)
 
 	SAVE_FILTER_STATE;
 
-	return(yn);
+	return(yn + m_offset);
+}
+
+void so_bsf_set_offset(F_SIZE offset)
+{
+	m_offset = offset;
+}
+
+F_SIZE so_bsf_get_offset(F_SIZE offset)
+{
+	return(m_offset);
 }

@@ -1,6 +1,6 @@
 #include "so_apf.h"
 
-static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2 = 0;
+static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2, m_offset = 0;
 static tp_coeffs m_coeffs = {0};
 
 tp_coeffs so_apf_calculate_coeffs(float Q, int fs)
@@ -22,5 +22,15 @@ F_SIZE so_apf_filter(F_SIZE sample)
 
 	SAVE_FILTER_STATE;
 
-	return(yn);
+	return(yn + m_offset);
+}
+
+void so_apf_set_offset(F_SIZE offset)
+{
+	m_offset = offset;
+}
+
+F_SIZE so_apf_get_offset(F_SIZE offset)
+{
+	return(m_offset);
 }

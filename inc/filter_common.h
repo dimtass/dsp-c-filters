@@ -1,4 +1,6 @@
 #pragma once
+#ifndef FILTER_COMMON_H__
+#define FILTER_COMMON_H__
 
 #include <stdint.h>
 #include "stm32f30x.h"
@@ -47,3 +49,5 @@ typedef struct {
 	m_xnz1 = xn; \
 	m_ynz2 = m_ynz1; \
 	m_ynz1 = yn
+
+#endif

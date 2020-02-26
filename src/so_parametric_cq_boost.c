@@ -1,6 +1,6 @@
 #include "so_parametric_cq_boost.h"
 
-static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2 = 0;
+static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2, m_offset = 0;
 static tp_coeffs m_coeffs = {0};
 
 tp_coeffs so_parametric_cq_boost_calculate_coeffs(float gain_db, float Q, int fc, int fs)
@@ -27,10 +27,21 @@ tp_coeffs so_parametric_cq_boost_calculate_coeffs(float gain_db, float Q, int fc
 F_SIZE so_parametric_cq_boost_filter(F_SIZE sample)
 {
 	F_SIZE xn = sample;
+	// Modified biquad
 	F_SIZE ynn = BIQUAD;
 	F_SIZE yn = m_coeffs.d0*xn + m_coeffs.c0*ynn;
 
 	SAVE_FILTER_STATE;
 
-	return(yn);
+	return(yn + m_offset);
+}
+
+void so_parametric_cq_boost_set_offset(F_SIZE offset)
+{
+	m_offset = offset;
+}
+
+F_SIZE so_parametric_cq_boost_get_offset(F_SIZE offset)
+{
+	return(m_offset);
 }

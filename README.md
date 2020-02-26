@@ -45,7 +45,7 @@ You need to include the filter_common.h and the calculate the coefficients with 
 function, where `xxx` the name of the unit file. Then in the sample processing function run the `xxx_filter()`
 function with the current sample as a parameter.
 
-There's a real example on how to use this lib in this repo [here]().
+There's a real example on how to use this lib in this repo [here](https://bitbucket.org/dimtass/stm32f303-adc-dac-dsp/src/master/).
 In this repo I'm using an STM32F303CC (black pill). There is an ADC
 that captures the input signal and then using DMA is storing the value
 to the SRAM and then the filter function is applied on the sample and

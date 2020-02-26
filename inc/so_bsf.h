@@ -10,3 +10,5 @@
 
 tp_coeffs so_bsf_calculate_coeffs(float Q, int fc, int fs);
 F_SIZE so_bsf_filter(F_SIZE sample);
+void so_bsf_set_offset(F_SIZE offset);
+F_SIZE so_bsf_get_offset(F_SIZE offset);

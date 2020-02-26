@@ -23,3 +23,5 @@
 
 tp_coeffs so_parametric_ncq_calculate_coeffs(float gain_db, float Q, int fc, int fs);
 F_SIZE so_parametric_ncq_filter(F_SIZE sample);
+void so_parametric_ncq_set_offset(F_SIZE offset);
+F_SIZE so_parametric_ncq_get_offset(F_SIZE offset);

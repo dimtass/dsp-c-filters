@@ -14,3 +14,5 @@
 
 tp_coeffs fo_shelving_high_calculate_coeffs(float gain_db, int fc, int fs);
 F_SIZE fo_shelving_high_filter(F_SIZE sample);
+void fo_shelving_high_set_offset(F_SIZE offset);
+F_SIZE fo_shelving_high_get_offset(F_SIZE offset);

@@ -1,6 +1,6 @@
 #include "fo_shelving_low.h"
 
-static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2 = 0;
+static F_SIZE m_xnz1, m_xnz2, m_ynz1, m_ynz2, m_offset = 0;
 static tp_coeffs m_coeffs = {0};
 
 tp_coeffs fo_shelving_low_calculate_coeffs(float gain_db, int fc, int fs)
@@ -28,5 +28,15 @@ F_SIZE fo_shelving_low_filter(F_SIZE sample)
 
 	SAVE_FILTER_STATE;
 
-	return(yn);
+	return(yn + m_offset);
+}
+
+void fo_shelving_low_set_offset(F_SIZE offset)
+{
+	m_offset = offset;
+}
+
+F_SIZE fo_shelving_low_get_offset(F_SIZE offset)
+{
+	return(m_offset);
 }

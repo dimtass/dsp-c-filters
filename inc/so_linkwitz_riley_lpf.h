@@ -14,3 +14,5 @@
 
 tp_coeffs so_linkwitz_riley_lpf_calculate_coeffs(int fc, int fs);
 F_SIZE so_linkwitz_riley_lpf_filter(F_SIZE sample);
+void so_linkwitz_riley_lpf_set_offset(F_SIZE offset);
+F_SIZE so_linkwitz_riley_lpf_get_offset(F_SIZE offset);
